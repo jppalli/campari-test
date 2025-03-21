@@ -55,9 +55,13 @@ class MainMenu extends Phaser.Scene {
         const buttonContainer = this.add.container(0, 0).setAlpha(0);
 
         // Create Play button
-        const playButtonBg = this.add.graphics();
-        playButtonBg.lineStyle(3, 0x000000);
-        playButtonBg.fillStyle(0xFFFFFF);
+        const playButtonBg = this.add.graphics({
+            x: 0,
+            y: 0
+        });
+        playButtonBg.clear();
+        playButtonBg.lineStyle(2, 0x000000, 1);
+        playButtonBg.fillStyle(0xFFFFFF, 1);
         playButtonBg.fillRoundedRect(90, 380, 180, 60, 15);
         playButtonBg.strokeRoundedRect(90, 380, 180, 60, 15);
         const playButtonText = this.add.text(180, 410, 'VAMOS!', {
@@ -69,9 +73,13 @@ class MainMenu extends Phaser.Scene {
         }).setOrigin(0.5);
 
         // Create Levels button
-        const levelsButtonBg = this.add.graphics();
-        levelsButtonBg.lineStyle(3, 0x000000);
-        levelsButtonBg.fillStyle(0xFFFFFF);
+        const levelsButtonBg = this.add.graphics({
+            x: 0,
+            y: 0
+        });
+        levelsButtonBg.clear();
+        levelsButtonBg.lineStyle(2, 0x000000, 1);
+        levelsButtonBg.fillStyle(0xFFFFFF, 1);
         levelsButtonBg.fillRoundedRect(100, 510, 160, 50, 15);
         levelsButtonBg.strokeRoundedRect(100, 510, 160, 50, 15);
         const levelsButtonText = this.add.text(180, 535, 'A LA CARTA', {
@@ -120,8 +128,11 @@ class MainMenu extends Phaser.Scene {
         });
         // Make button interactive
         // Make play button interactive
-        const playButtonHitArea = new Phaser.Geom.Rectangle(90, 380, 180, 60);
-        playButtonBg.setInteractive(playButtonHitArea, Phaser.Geom.Rectangle.Contains)
+        playButtonBg.setInteractive({
+                hitArea: new Phaser.Geom.Rectangle(90, 380, 180, 60),
+                hitAreaCallback: Phaser.Geom.Rectangle.Contains,
+                useHandCursor: true
+            })
             .on('pointerdown', () => {
                 const gameScene = this.scene.get('BartendingGame');
                 gameScene.tutorialShown = false;
@@ -130,8 +141,11 @@ class MainMenu extends Phaser.Scene {
                 });
             });
         // Make levels button interactive
-        const levelsButtonHitArea = new Phaser.Geom.Rectangle(100, 510, 160, 50);
-        levelsButtonBg.setInteractive(levelsButtonHitArea, Phaser.Geom.Rectangle.Contains)
+        levelsButtonBg.setInteractive({
+                hitArea: new Phaser.Geom.Rectangle(100, 510, 160, 50),
+                hitAreaCallback: Phaser.Geom.Rectangle.Contains,
+                useHandCursor: true
+            })
             .on('pointerdown', () => {
                 this.scene.start('LevelSelect');
             });
@@ -1073,8 +1087,9 @@ class BartendingGame extends Phaser.Scene {
 
         // Create continue button
         const buttonBg = this.add.graphics();
-        buttonBg.lineStyle(3, 0x000000);
-        buttonBg.fillStyle(0xFFFFFF);
+        buttonBg.clear();
+        buttonBg.lineStyle(2, 0x000000, 1);
+        buttonBg.fillStyle(0xFFFFFF, 1);
         buttonBg.fillRoundedRect(-90, 480, 180, 60, 15);
         buttonBg.strokeRoundedRect(-90, 480, 180, 60, 15);
 
@@ -1411,8 +1426,9 @@ class BartendingGame extends Phaser.Scene {
                 const ingredientData = this.drinks[this.currentDrink].ingredients[ingredient];
                 const button = this.add.container(60, buttonY);
                 const buttonGraphics = this.add.graphics();
-                buttonGraphics.lineStyle(2, 0x000000);
-                buttonGraphics.fillStyle(ingredient === ingredients[0] ? 0xaaaaaa : 0x666666); // Set initial colors
+                buttonGraphics.clear();
+                buttonGraphics.lineStyle(2, 0x000000, 1);
+                buttonGraphics.fillStyle(ingredient === ingredients[0] ? 0xaaaaaa : 0x666666, 1);
                 buttonGraphics.fillRoundedRect(-75, -20, 150, 40, 15);
                 buttonGraphics.strokeRoundedRect(-75, -20, 150, 40, 15);
                 const text = this.add.text(0, 0, ingredient.toUpperCase(), {
@@ -1679,7 +1695,7 @@ class BartendingGame extends Phaser.Scene {
             }
         }).setOrigin(0.5);
         // Add subtitle
-        const subtitleText = this.add.text(0, 100, 'Presta atención a la receta:\n', {
+        const subtitleText = this.add.text(0, 100, 'Presta atención a la receta:', {
             fontSize: '24px',
             fill: '#FFFFFF',
             fontFamily: 'DM Serif Display',
@@ -1694,9 +1710,9 @@ class BartendingGame extends Phaser.Scene {
         let tipText = '';
         if (this.currentDrink === 'americano') {
             tipText = 'AMERICANO:\n';
-            tipText += '1 PARTE CAMPARI\n';
-            tipText += '1 PARTE VERMOUTH ROSSO\n';
-            tipText += '1 SPLASH SODA';
+            tipText += '1 PARTE DE CAMPARI\n';
+            tipText += '1 PARTE DE VERMOUTH ROSSO\n';
+            tipText += '1 SPLASH DE SODA';
         } else if (this.currentDrink === 'negroni') {
             tipText = 'NEGRONI:\n';
             tipText += '1 PARTE CAMPARI\n';
@@ -1725,8 +1741,9 @@ class BartendingGame extends Phaser.Scene {
         }).setOrigin(0, 0.5);
         // Create retry button
         const buttonBg = this.add.graphics();
-        buttonBg.lineStyle(3, 0x000000);
-        buttonBg.fillStyle(0xFFFFFF);
+        buttonBg.clear();
+        buttonBg.lineStyle(2, 0x000000, 1);
+        buttonBg.fillStyle(0xFFFFFF, 1);
         buttonBg.fillRoundedRect(-90, 480, 180, 60, 15);
         buttonBg.strokeRoundedRect(-90, 480, 180, 60, 15);
         const buttonText = this.add.text(0, 510, 'PREPARA', {
@@ -1835,8 +1852,9 @@ class BartendingGame extends Phaser.Scene {
         // Add skip button
         // Create skip button background
         const skipButtonBg = this.add.graphics();
-        skipButtonBg.lineStyle(3, 0x000000);
-        skipButtonBg.fillStyle(0xFFFFFF);
+        skipButtonBg.clear();
+        skipButtonBg.lineStyle(2, 0x000000, 1);
+        skipButtonBg.fillStyle(0xFFFFFF, 1);
         skipButtonBg.fillRoundedRect(90, 520, 180, 60, 15);
         skipButtonBg.strokeRoundedRect(90, 520, 180, 60, 15);
 
@@ -1905,10 +1923,13 @@ class LevelSelect extends Phaser.Scene {
             const isLocked = !basicDrinks.includes(drink);
             // Create button background
             const buttonBg = this.add.graphics();
-            buttonBg.lineStyle(3, isLocked ? 0x666666 : 0x000000);
-            buttonBg.fillStyle(isLocked ? 0x999999 : 0xFFFFFF);
+            buttonBg.clear();
+            buttonBg.beginPath();
+            buttonBg.lineStyle(2, isLocked ? 0x666666 : 0x000000, 1);
+            buttonBg.fillStyle(isLocked ? 0x999999 : 0xFFFFFF, 1);
             buttonBg.fillRoundedRect(40, y + 10, 280, 40, 15);
             buttonBg.strokeRoundedRect(40, y + 10, 280, 40, 15);
+            buttonBg.closePath();
             // Button text
             const buttonText = this.add.text(180, y + 30, drink.toUpperCase(), {
                 fontSize: '24px',
@@ -1939,8 +1960,9 @@ class LevelSelect extends Phaser.Scene {
         });
         // Add back button
         const backButtonBg = this.add.graphics();
-        backButtonBg.lineStyle(3, 0x000000);
-        backButtonBg.fillStyle(0xFFFFFF);
+        backButtonBg.clear();
+        backButtonBg.lineStyle(2, 0x000000, 1);
+        backButtonBg.fillStyle(0xFFFFFF, 1);
         backButtonBg.fillRoundedRect(90, 580, 180, 60, 15);
         backButtonBg.strokeRoundedRect(90, 580, 180, 60, 15);
         const backButtonText = this.add.text(180, 610, 'VOLVER', {
@@ -2036,8 +2058,9 @@ class LandingPage extends Phaser.Scene {
         }).setOrigin(0.5);
         // Add return to menu button
         const buttonBg = this.add.graphics();
-        buttonBg.lineStyle(3, 0x000000);
-        buttonBg.fillStyle(0xFFFFFF);
+        buttonBg.clear();
+        buttonBg.lineStyle(2, 0x000000, 1);
+        buttonBg.fillStyle(0xFFFFFF, 1);
         buttonBg.fillRoundedRect(90, 500, 180, 60, 15);
         buttonBg.strokeRoundedRect(90, 500, 180, 60, 15);
         const buttonText = this.add.text(180, 530, 'MENU', {
