@@ -764,7 +764,7 @@ class BartendingGame extends Phaser.Scene {
             let isSpilled = false;
 
             if (this.drinks[this.currentDrink].isMixed) {
-                const increment = 0.020;
+                const increment = 0.015;
                 this.fillLevel += increment;
 
                 if (!this.ingredientFillLevels[this.currentIngredient]) {
@@ -1695,7 +1695,7 @@ class BartendingGame extends Phaser.Scene {
             }
         }).setOrigin(0.5);
         // Add subtitle
-        const subtitleText = this.add.text(0, 100, 'Presta atención a la receta:', {
+        const subtitleText = this.add.text(0, 100, 'Revisá la receta:', {
             fontSize: '24px',
             fill: '#FFFFFF',
             fontFamily: 'DM Serif Display',
@@ -2044,7 +2044,7 @@ class LandingPage extends Phaser.Scene {
             }
         }).setOrigin(0.5);
         // Placeholder for future content
-        const promoText = this.add.text(180, 220, 'Mostra este codigo CAMPARI25\nen la barra y obtené un 20% de\ndescuento en tu proximo CAMPARI.\n\n¿Como lo vas a preparar?', {
+        const promoText = this.add.text(180, 250, 'Mostra este codigo: CAMPARI25\nen la barra y obtené un 20% de\ndescuento en tu proximo CAMPARI.\n\n¿Como lo vas a preparar?', {
             fontSize: '24px',
             fontFamily: 'DM Serif Display',
             fill: '#FFFFFF',
