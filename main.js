@@ -1073,7 +1073,7 @@ class BartendingGame extends Phaser.Scene {
             fontFamily: 'DM Serif Display',
             fill: '#FFFFFF',
             align: 'center',
-            lineSpacing: 12,
+            lineSpacing: 4,
             stroke: '#000000',
             strokeThickness: 2,
             padding: {
@@ -1728,7 +1728,7 @@ class BartendingGame extends Phaser.Scene {
             fontFamily: 'DM Serif Display',
             fill: '#FFFFFF',
             align: 'left',
-            lineSpacing: 12,
+            lineSpacing: 4,
             stroke: '#000000',
             strokeThickness: 2,
             padding: {
@@ -2028,7 +2028,7 @@ class LandingPage extends Phaser.Scene {
             .setDisplaySize(360, 640)
             .setDisplaySize(360, 640);
         // Add congratulations text
-        const congratsText = this.add.text(180, 160, '¡FELICITACIONES!', {
+        const congratsText = this.add.text(180, 60, '¡FELICITACIONES!', {
             fontSize: '40px',
             fontFamily: 'DM Serif Display',
             fill: '#FFFFFF',
@@ -2044,14 +2044,14 @@ class LandingPage extends Phaser.Scene {
             }
         }).setOrigin(0.5);
         // Placeholder for future content
-        const promoText = this.add.text(180, 320, 'Mostra este codigo CAMPARI25\nen la barra y obtené un 20% de\ndescuento en tu proximo CAMPARI.\n\n¿Como lo vas a preparar?', {
+        const promoText = this.add.text(180, 220, 'Mostra este codigo CAMPARI25\nen la barra y obtené un 20% de\ndescuento en tu proximo CAMPARI.\n\n¿Como lo vas a preparar?', {
             fontSize: '24px',
             fontFamily: 'DM Serif Display',
             fill: '#FFFFFF',
             align: 'center',
             stroke: '#000000',
             strokeThickness: 2,
-            lineSpacing: 10,
+            lineSpacing: 4,
             wordWrap: {
                 width: 300
             }
